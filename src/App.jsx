@@ -12,9 +12,31 @@ import DetailsPark from "./pages/detailsPark/DetailsPark.jsx";
 import Contact from "./pages/contact/Contact.jsx";
 import TermsConditions from "./pages/terms & conditions/TermsConditions.jsx";
 import PrivacyNotice from "./pages/privacy notice/PrivacyNotice.jsx";
+import {useState, useEffect} from "react";
+import axios from "axios";
+
 
 
 function App() {
+    const [amenities, setAmenities] = useState([]);
+    const [message, setMessage] = useState("");
+
+    useEffect(() => {
+        async function fetchAmenities() {
+            try {
+                const response = await axios.get(
+                    `https://developer.nps.gov/api/v1/amenities?api_key=${import.meta.env.VITE_NPS_API_KEY}`
+                );
+                setAmenities(response.data.data);
+                console.log(response.data.data)
+            } catch (err) {
+                console.error(err);
+                setMessage("fout bij ophalen data");
+            }
+        }
+
+        fetchAmenities();
+    }, []);
 
     return (
         <>
