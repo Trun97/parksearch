@@ -14,6 +14,7 @@ import TermsConditions from "./pages/terms & conditions/TermsConditions.jsx";
 import PrivacyNotice from "./pages/privacy notice/PrivacyNotice.jsx";
 
 
+
 function App() {
 
     return (
