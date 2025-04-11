@@ -2,12 +2,14 @@ import './SearchResult.css'
 import {useContext, useEffect, useState} from "react";
 import axios from "axios";
 import {ParkSearchContext} from "../../context/ParkSearchContext/ParkSearchContext.jsx";
+import {useNavigate} from "react-router-dom";
 
 function SearchResult() {
     const {selectedStates, selectedFacilities} = useContext(ParkSearchContext);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const [parks, setParks] = useState([])
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchParks() {
@@ -58,8 +60,8 @@ function SearchResult() {
                 if (filtered.length === 0) {
                     setError("No parks found in the selected states.");
                 }
-
                 setParks(filtered);
+                setError("");
                 console.log(parks);
 
             } catch (err) {
@@ -76,23 +78,31 @@ function SearchResult() {
     if (loading) return <p>Loading...</p>;
 
     return (
-        <>
-            <h1>Search Result</h1>
-            {loading && <p>Loading...</p>}
+        <div>
+            <h1>Found Parks</h1>
+
             {error && <p>{error}</p>}
 
             {parks.length > 0 && (
-                <ul>
+                <div>
                     {parks.map((park) => (
-                        <li key={park.id}>
-                            <h2>{park.fullName}</h2>
+                        <div key={park.id}>
+                            <h2 onClick={() => navigate(`/detailspark/${park.parkCode}`)}>
+                                {park.fullName}
+                            </h2>
+
+                            <img
+                                src={park.images?.[0]?.url}
+                                alt={park.fullName}
+                            />
+
                             <p>{park.states}</p>
-                        </li>
+                        </div>
                     ))}
-                </ul>
+                </div>
             )}
-        </>
-    )
+        </div>
+    );
 }
 
 export default SearchResult;

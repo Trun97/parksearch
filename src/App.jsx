@@ -28,7 +28,7 @@ function App() {
                 <Route path="/profile" element={<Profile/>}/>
                 <Route path="/parksearch" element={<ParkSearch/>}/>
                 <Route path="/searchresult" element={<SearchResult/>}/>
-                <Route path="/detailspark" element={<DetailsPark/>}/>
+                <Route path="/detailspark/:id" element={<DetailsPark/>}/>
                 <Route path="/contact" element={<Contact/>}/>
                 <Route path="/terms" element={<TermsConditions/>}/>
                 <Route path="/privacy" element={<PrivacyNotice/>}/>
