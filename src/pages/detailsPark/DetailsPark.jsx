@@ -31,12 +31,45 @@ function DetailsPark() {
 
     return (
         <div>
-            <h1>Details Park</h1>
-            <p>{park.fullName}</p>
+            <h1>{park.fullName}</h1>
+
+            {park.images?.[0]?.url && (
+                <img src={park.images[0].url} alt={park.fullName} />
+            )}
+
             <p>{park.description}</p>
-            <p>{park.operatingHours[0].description}</p>
-            <p>{park.weatherInfo}</p>
-            <p>Email: {park.contacts.emailAddresses[0].emailAddress}</p>
+
+            {park.operatingHours?.[0]?.description && (
+                <div>
+                    <h2>Operating Hours</h2>
+                    <p>{park.operatingHours[0].description}</p>
+                </div>
+            )}
+
+            {park.weatherInfo && (
+                <div>
+                    <h2>Weather Info</h2>
+                    <p>{park.weatherInfo}</p>
+                </div>
+            )}
+
+            {park.contacts?.emailAddresses?.[0]?.emailAddress && (
+                <div>
+                    <h2>Contact</h2>
+                    <p>Email: {park.contacts.emailAddresses[0].emailAddress}</p>
+                </div>
+            )}
+
+            {park.activities?.length > 0 && (
+                <div>
+                    <h2>Activities</h2>
+                    <ul>
+                        {park.activities.map((activity) => (
+                            <li key={activity.id}>{activity.name}</li>
+                        ))}
+                    </ul>
+                </div>
+            )}
         </div>
     );
 }
