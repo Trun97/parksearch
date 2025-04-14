@@ -1,5 +1,6 @@
 import './Register.css'
 import { useState } from "react";
+import axios from "axios";
 
 function Register() {
     const [formData, setFormData] = useState({
@@ -7,6 +8,9 @@ function Register() {
         email: "",
         password: "",
     });
+    const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
+
 
     function handleChange(e) {
         setFormData({
@@ -15,13 +19,29 @@ function Register() {
         });
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        console.log("Formulier verzonden!");
-        console.log("Gebruikersnaam:", formData.username);
-        console.log("Email:", formData.email);
-        console.log("Wachtwoord:", formData.password);
+
+        try {
+            await axios.post(
+                "https://frontend-educational-backend.herokuapp.com/api/auth/signup",
+                {
+                    username: formData.username,
+                    email: formData.email,
+                    password: formData.password,
+                    role: ["user"],
+                }
+            );
+
+            setSuccess("Registration successful! You can now log in.");
+            setError("");
+        } catch (error) {
+            console.error("Registration failed:", error);
+            setError("Something went wrong.");
+            setSuccess("");
+        }
     }
+
 
     return (
         <div>
@@ -59,6 +79,8 @@ function Register() {
                 <br />
                 <button type="submit">Create account</button>
             </form>
+            {error && <p>{error}</p>}
+            {success && <p>{success}</p>}
         </div>
     );
 }
