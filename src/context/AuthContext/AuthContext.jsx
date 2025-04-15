@@ -1,3 +1,4 @@
+
 import { createContext, useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 
@@ -10,8 +11,6 @@ function AuthContextProvider({ children }) {
     });
 
     useEffect(() => {
-        console.log("Auth check gestart...");
-
         const token = localStorage.getItem("token");
         const username = localStorage.getItem("username");
         const email = localStorage.getItem("email");
@@ -19,32 +18,25 @@ function AuthContextProvider({ children }) {
         if (token && username && email) {
             try {
                 const decoded = jwtDecode(token);
-                console.log("Geldig token gevonden");
-                console.log("Gebruikersnaam:", username);
-                console.log("E-mail:", email);
 
                 setAuthState({
                     user: { username, email },
                     status: "done",
                 });
             } catch (e) {
-                console.error("Ongeldig token:", e);
+                console.error(e);
                 localStorage.clear();
                 setAuthState({ user: null, status: "done" });
             }
         } else {
-            console.log("Geen token gevonden of onvolledige info");
             setAuthState({ user: null, status: "done" });
         }
     }, []);
 
     function login(data) {
-        console.log("Inloggen met data:", data);
-
         localStorage.setItem("token", data.accessToken);
         localStorage.setItem("username", data.username);
         localStorage.setItem("email", data.email);
-
         setAuthState({
             user: {
                 username: data.username,
@@ -52,15 +44,11 @@ function AuthContextProvider({ children }) {
             },
             status: "done",
         });
-
-        console.log("Gebruiker succesvol ingelogd");
     }
 
     function logout() {
-        console.log("Uitloggen...");
         localStorage.clear();
         setAuthState({ user: null, status: "done" });
-        console.log("Gebruiker uitgelogd");
     }
 
     const contextData = {
@@ -77,3 +65,4 @@ function AuthContextProvider({ children }) {
 }
 
 export default AuthContextProvider;
+
