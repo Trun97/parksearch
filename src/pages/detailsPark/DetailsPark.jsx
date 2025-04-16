@@ -7,6 +7,8 @@ function DetailsPark() {
     const { id } = useParams();
     const [park, setPark] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [message, setMessage] = useState("");
+
 
     useEffect(() => {
         async function fetchParkDetails() {
@@ -25,6 +27,25 @@ function DetailsPark() {
 
         fetchParkDetails();
     }, [id]);
+
+    function handleAddFavorite() {
+        if (!park) return;
+        const storedFavorites = localStorage.getItem("favorites");
+        const favorites = storedFavorites ? JSON.parse(storedFavorites) : [];
+        const alreadyExists = favorites.some((fav) => fav.id === park.id);
+
+        if (alreadyExists) {
+            setMessage("This park is already in the favorites list.");
+        } else {
+            const updatedFavorites = [...favorites, {
+                id: park.id,
+                parkCode: park.parkCode,
+                fullName: park.fullName
+            }];
+            localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+            setMessage("Park added tot favorites!");
+        }
+    }
 
     if (loading) return <p>Loading...</p>;
     if (!park) return <p>Park not found.</p>;
@@ -70,6 +91,8 @@ function DetailsPark() {
                     </ul>
                 </div>
             )}
+            <button onClick={handleAddFavorite}>Add to favorites</button>
+            {message && <p>{message}</p>}
         </div>
     );
 }
