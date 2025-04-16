@@ -30,16 +30,11 @@ function DetailsPark() {
 
     function handleAddFavorite() {
         if (!park) return;
-
-        console.log("Favoriet toevoegen gestart.");
         const storedFavorites = localStorage.getItem("favorites");
         const favorites = storedFavorites ? JSON.parse(storedFavorites) : [];
-        console.log("Huidige favorieten in localStorage:", favorites);
-
         const alreadyExists = favorites.some((fav) => fav.id === park.id);
 
         if (alreadyExists) {
-            console.log("Park staat al in favorieten");
             setMessage("This park is already in the favorites list.");
         } else {
             const updatedFavorites = [...favorites, {
@@ -48,7 +43,6 @@ function DetailsPark() {
                 fullName: park.fullName
             }];
             localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-            console.log("Park toegevoegd aan localStorage:", park.fullName);
             setMessage("Park added tot favorites!");
         }
     }
