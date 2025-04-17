@@ -1,6 +1,8 @@
-import './Register.css'
+import './Register.css';
 import { useState } from "react";
 import axios from "axios";
+import Input from "../../components/Input/Input.jsx";
+import Button from "../../components/Button/Button.jsx";
 
 function Register() {
     const [formData, setFormData] = useState({
@@ -11,7 +13,6 @@ function Register() {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
 
-
     function handleChange(e) {
         setFormData({
             ...formData,
@@ -21,6 +22,13 @@ function Register() {
 
     async function handleSubmit(e) {
         e.preventDefault();
+
+        if (!formData.username || !formData.email || !formData.password) {
+            setError("Please fill in all fields.");
+            return;
+        }
+
+        setError("");
 
         try {
             await axios.post(
@@ -36,12 +44,10 @@ function Register() {
             setSuccess("Registration successful! You can now log in.");
             setError("");
         } catch (error) {
-            console.error("Registration failed:", error);
             setError("Something went wrong.");
             setSuccess("");
         }
     }
-
 
     return (
         <div>
@@ -49,8 +55,7 @@ function Register() {
             <form onSubmit={handleSubmit}>
                 <label>
                     Username:
-                    <input
-                        type="text"
+                    <Input
                         name="username"
                         value={formData.username}
                         onChange={handleChange}
@@ -59,7 +64,7 @@ function Register() {
                 <br />
                 <label>
                     Email:
-                    <input
+                    <Input
                         type="email"
                         name="email"
                         value={formData.email}
@@ -69,7 +74,7 @@ function Register() {
                 <br />
                 <label>
                     Password:
-                    <input
+                    <Input
                         type="password"
                         name="password"
                         value={formData.password}
@@ -77,10 +82,11 @@ function Register() {
                     />
                 </label>
                 <br />
-                <button type="submit">Create account</button>
+                <Button type="submit">Create account</Button>
             </form>
-            {error && <p>{error}</p>}
-            {success && <p>{success}</p>}
+
+            {error && <p className="error-message">{error}</p>}
+            {success && <p className="success-message">{success}</p>}
         </div>
     );
 }

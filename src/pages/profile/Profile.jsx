@@ -2,6 +2,8 @@ import './Profile.css'
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext/AuthContext.jsx";
 import { Link } from "react-router-dom";
+import Button from "../../components/Button/Button.jsx";
+import ProfileInfo from "../../components/ProfileInfo/ProfileInfo.jsx";
 
 function Profile() {
     const { user } = useContext(AuthContext);
@@ -31,10 +33,7 @@ function Profile() {
             <h2>Profile</h2>
 
             {user && (
-                <>
-                    <p><strong>Username:</strong> {user.username}</p>
-                    <p><strong>E-mailadres:</strong> {user.email}</p>
-                </>
+                <ProfileInfo username={user.username} email={user.email} />
             )}
 
             <h3>Your favorite parks</h3>
@@ -47,11 +46,11 @@ function Profile() {
                         {favorites.map((park) => (
                             <li key={park.id}>
                                 <Link to={`/detailspark/${park.parkCode}`}>{park.fullName}</Link>
-                                <button onClick={() => removeFavorite(park.id)}>Delete</button>
+                                <Button onClick={() => removeFavorite(park.id)}>Delete</Button>
                             </li>
                         ))}
                     </ul>
-                    <button onClick={clearAllFavorites}>Delete all favorites</button>
+                    <Button onClick={clearAllFavorites}>Delete all favorites</Button>
                 </>
             )}
         </div>

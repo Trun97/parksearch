@@ -1,8 +1,13 @@
 import './Input.css'
 
-function Input() {
+function Input({ type = "text", name, value, onChange }) {
     return (
-        <input/>
+        <input
+            type={type}
+            name={name}
+            value={value}
+            onChange={onChange}
+        />
     );
 }
 

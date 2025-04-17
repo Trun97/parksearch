@@ -2,6 +2,9 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from '../../context/AuthContext/AuthContext.jsx';
+import Input from "../../components/Input/Input.jsx";
+import Button from "../../components/Button/Button.jsx";
+
 
 function Login() {
     const { login } = useContext(AuthContext);
@@ -48,21 +51,15 @@ function Login() {
             <form onSubmit={handleSubmit}>
                 <label>
                     Username:
-                    <input type="text" value={username} onChange={handleUsernameChange} />
+                    <Input type="text" value={username} onChange={handleUsernameChange} />
                 </label>
                 <br />
                 <label>
                     Password:
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={handlePasswordChange}
-                    />
+                    <Input type="password" value={password} onChange={handlePasswordChange} />
                 </label>
                 <br/>
-                <button type="submit" disabled={loading}>
-                    {loading ? "Logging in..." : "Login"}
-                </button>
+                <Button type="submit">{loading ? "Logging in..." : "Login"}</Button>
             </form>
 
             {error && <p>{error}</p>}
