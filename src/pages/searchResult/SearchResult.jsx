@@ -17,7 +17,6 @@ function SearchResult() {
             setError("");
             try {
                 const response2 = await axios.get(`https://developer.nps.gov/api/v1/amenities/parksplaces?stateCode=${selectedStates.join(",")}&id=${selectedFacilities.join(",")}&api_key=${import.meta.env.VITE_NPS_API_KEY}`);
-                console.log(response2.data.data);
                 const parksPlacesData = response2.data.data;
                 const parkCodes = [];
 
@@ -28,7 +27,6 @@ function SearchResult() {
                         }
                     })
                 })
-                console.log(parkCodes);
                 if (parkCodes.length === 0) {
                     setError("No parks found for this selection.");
                     setParks([]);
@@ -40,8 +38,6 @@ function SearchResult() {
 
                 const allParks = res2.data.data;
                 const filtered = [];
-
-                console.log(allParks);
 
                 for (let i = 0; i < allParks.length; i++) {
                     const park = allParks[i];
@@ -59,10 +55,11 @@ function SearchResult() {
 
                 if (filtered.length === 0) {
                     setError("No parks found in the selected states.");
+                    setParks([]);
+                } else {
+                    setParks(filtered);
+                    setError("");
                 }
-                setParks(filtered);
-                setError("");
-                console.log(parks);
 
             } catch (err) {
                 console.error("error fetching data:", err)

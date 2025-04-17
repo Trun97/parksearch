@@ -2,6 +2,8 @@ import './DetailsPark.css'
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Button from "../../components/Button/Button.jsx";
+import ParkSection from "../../components/ParkSection/ParkSection.jsx";
 
 function DetailsPark() {
     const { id } = useParams();
@@ -61,24 +63,21 @@ function DetailsPark() {
             <p>{park.description}</p>
 
             {park.operatingHours?.[0]?.description && (
-                <div>
-                    <h2>Operating Hours</h2>
-                    <p>{park.operatingHours[0].description}</p>
-                </div>
+                <ParkSection title="Operating Hours">
+                    {park.operatingHours[0].description}
+                </ParkSection>
             )}
 
             {park.weatherInfo && (
-                <div>
-                    <h2>Weather Info</h2>
-                    <p>{park.weatherInfo}</p>
-                </div>
+                <ParkSection title="Weather Info">
+                    {park.weatherInfo}
+                </ParkSection>
             )}
 
             {park.contacts?.emailAddresses?.[0]?.emailAddress && (
-                <div>
-                    <h2>Contact</h2>
-                    <p>Email: {park.contacts.emailAddresses[0].emailAddress}</p>
-                </div>
+                <ParkSection title="Contact">
+                    Email: {park.contacts.emailAddresses[0].emailAddress}
+                </ParkSection>
             )}
 
             {park.activities?.length > 0 && (
@@ -91,7 +90,7 @@ function DetailsPark() {
                     </ul>
                 </div>
             )}
-            <button onClick={handleAddFavorite}>Add to favorites</button>
+            <Button onClick={handleAddFavorite}>Add to favorites</Button>
             {message && <p>{message}</p>}
         </div>
     );

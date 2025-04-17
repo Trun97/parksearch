@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import usStates from "../../data/usStates.js";
 import { ParkSearchContext} from "../../context/ParkSearchContext/ParkSearchContext.jsx";
+import Button from "../../components/Button/Button.jsx";
+import isMaxSelectionReached from "../../helpers/isMaxSelectionReached.js";
+import CheckboxItem from "../../components/CheckboxItem/CheckboxItem.jsx";
+
 
 function ParkSearch() {
     const navigate = useNavigate();
@@ -41,7 +45,7 @@ function ParkSearch() {
         if (selectedStates.includes(code)) {
             setSelectedStates(selectedStates.filter((c) => c !== code));
         } else {
-            if (selectedStates.length < 5) {
+            if (!isMaxSelectionReached(selectedStates, 5)) {
                 setSelectedStates([...selectedStates, code]);
             } else {
                 setMessage("You can select up to 5 states.");
@@ -76,34 +80,30 @@ function ParkSearch() {
             <h1>Select up to 5 states</h1>
             <div>
                 {usStates.map(({ code, name }) => (
-                    <label key={code}>
-                        <input
-                            type="checkbox"
-                            value={code}
-                            checked={selectedStates.includes(code)}
-                            onChange={() => toggleState(code)}
-                        />
-                        {name}
-                    </label>
+                    <CheckboxItem
+                        key={code}
+                        label={name}
+                        value={code}
+                        checked={selectedStates.includes(code)}
+                        onChange={() => toggleState(code)}
+                    />
                 ))}
             </div>
 
             <h2>Select up to 5 amenities</h2>
             <div>
                 {allAmenities.map((amenity) => (
-                    <label key={amenity.id}>
-                        <input
-                            type="checkbox"
-                            value={amenity.id}
-                            checked={selectedFacilities.includes(amenity.id)}
-                            onChange={() => toggleAmenity(amenity.id)}
-                        />
-                        {amenity.name}
-                    </label>
+                    <CheckboxItem
+                        key={amenity.id}
+                        label={amenity.name}
+                        value={amenity.id}
+                        checked={selectedFacilities.includes(amenity.id)}
+                        onChange={() => toggleAmenity(amenity.id)}
+                    />
                 ))}
             </div>
 
-            <button onClick={handleSearch}>Search</button>
+            <Button onClick={handleSearch}>Search</Button>
 
             {loading && <p>Loading amenities...</p>}
             {message && <p>{message}</p>}
