@@ -13,6 +13,7 @@ import Contact from "./pages/contact/Contact.jsx";
 import TermsConditions from "./pages/terms & conditions/TermsConditions.jsx";
 import PrivacyNotice from "./pages/privacy notice/PrivacyNotice.jsx";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
+import Footer from "./components/Footer/Footer.jsx";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
     return (
         <>
             <NavBar/>
+            <main>
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/aboutus" element={<AboutUs/>}/>
@@ -60,6 +62,8 @@ function App() {
                 <Route path="/terms" element={<TermsConditions/>}/>
                 <Route path="/privacy" element={<PrivacyNotice/>}/>
             </Routes>
+            </main>
+            <Footer/>
         </>
     )
 }
