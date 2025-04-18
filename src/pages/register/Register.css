@@ -1,0 +1,99 @@
+/*////////////////////////////////////////////////////////////////////////
+Table of Contents:
+    1. Global Styles
+    2. Typography
+    3. Form Section
+    4. Responsiveness
+////////////////////////////////////////////////////////////////////////*/
+
+/*////////////////////////
+    1. Global Styles
+////////////////////////*/
+
+.outer-coll {
+    background-color: #e6efe6;
+    min-height: calc(100vh - 120px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*////////////////////////
+    2. Typography
+////////////////////////*/
+
+.form-container h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    text-align: center;
+}
+
+/*///////////// 3.1 Form Section /////////////*/
+
+.form-container {
+    max-width: 500px;
+    width: 100%;
+    background-color: white;
+    margin: 40px 20px;
+    padding: 30px;
+    border: 1px solid black;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.form-container label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    font-weight: bold;
+    gap: 6px;
+}
+
+.form-container input {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-container button {
+    margin-top: 15px;
+    align-self: flex-start;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+}
+
+.success-message {
+    color: green;
+    margin-top: 10px;
+}
+
+/*////////////////////////
+    4. Responsiveness
+////////////////////////*/
+
+@media screen and (min-width: 768px) {
+    .header h1 {
+        font-size: 40px;
+    }
+
+    .form-container h2 {
+        font-size: 30px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .header h1 {
+        font-size: 48px;
+    }
+
+    .form-container h2 {
+        font-size: 32px;
+    }
+}
