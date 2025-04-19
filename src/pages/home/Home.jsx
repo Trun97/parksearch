@@ -14,7 +14,7 @@ function Home() {
         <>
             <Header image={rocky} title="National Parks USA"/>
             <section className="homeText">
-                <h2>Home - discover Your Perfect National Park!</h2>
+                <h2>Home - Discover Your Perfect National Park!</h2>
                 <p>
                     The United States is home to some of the most beautiful national parks in the world.
                     From breathtaking mountain landscapes to vast forests and deserts, there is always a park

@@ -4,6 +4,9 @@ import axios from "axios";
 import { AuthContext } from '../../context/AuthContext/AuthContext.jsx';
 import Input from "../../components/Input/Input.jsx";
 import Button from "../../components/Button/Button.jsx";
+import Header from "../../components/Header/Header.jsx";
+import rocky3 from "../../assets/Great-Smoky-Mountains-National-Park.jpg"
+import './Login.css';
 
 
 function Login() {
@@ -46,23 +49,25 @@ function Login() {
     }
 
     return (
-        <div>
-            <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Username:
-                    <Input type="text" value={username} onChange={handleUsernameChange} />
-                </label>
-                <br />
-                <label>
-                    Password:
-                    <Input type="password" value={password} onChange={handlePasswordChange} />
-                </label>
-                <br/>
-                <Button type="submit">{loading ? "Logging in..." : "Login"}</Button>
-            </form>
-
-            {error && <p>{error}</p>}
+        <div className="outer-coll">
+            <Header image={rocky3} title="National Parks USA"/>
+            <section className="form-container">
+                <h2>Login</h2>
+                <form onSubmit={handleSubmit}>
+                    <label>
+                        Username:
+                        <Input type="text" value={username} onChange={handleUsernameChange}/>
+                    </label>
+                    <br/>
+                    <label>
+                        Password:
+                        <Input type="password" value={password} onChange={handlePasswordChange}/>
+                    </label>
+                    <br/>
+                    <Button type="submit">{loading ? "Logging in..." : "Login"}</Button>
+                </form>
+                {error && <p>{error}</p>}
+            </section>
         </div>
     );
 }
