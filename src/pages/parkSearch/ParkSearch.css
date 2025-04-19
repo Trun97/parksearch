@@ -1,0 +1,105 @@
+/*////////////////////////////////////////////////////////////////////////
+Table of Contents:
+    1. Global Styles
+    2. Filter Section
+    3. Responsiveness
+////////////////////////////////////////////////////////////////////////*/
+
+
+/*////////////////////////
+    1. Global Styles
+////////////////////////*/
+
+.outer-coll-park {
+    background-color: #e6efe6;
+    min-height: calc(100vh - 120px);
+    padding-bottom: 40px;
+}
+
+
+/*////////////////////////
+    2. Filter Section
+////////////////////////*/
+
+.filters {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.wrapper label {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 200px;
+    max-width: 100%;
+}
+
+section h2 {
+    text-decoration: underline;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+section p {
+    padding-top: 15px;
+    color: black;
+}
+
+/*////////////////////////
+    3. Responsiveness
+////////////////////////*/
+@media screen and (max-width: 576px) {
+    .wrapper label {
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+
+    .filters {
+        padding: 20px;
+    }
+
+    section h2 {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper label {
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+
+    section h2 {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .wrapper label {
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 45%;
+        max-width: 45%;
+    }
+
+    .filters {
+        padding: 25px;
+    }
+
+    section h2 {
+        font-size: 20px;
+    }
+}

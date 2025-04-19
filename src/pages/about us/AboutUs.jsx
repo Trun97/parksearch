@@ -3,6 +3,8 @@ import Button from "../../components/Button/Button.jsx";
 import {useNavigate} from "react-router-dom";
 import {useContext} from "react";
 import {AuthContext} from "../../context/AuthContext/AuthContext.jsx";
+import Header from "../../components/Header/Header.jsx";
+import rocky1 from '../../assets/rocky-mountains3.jpg'
 
 function AboutUs() {
     const navigate = useNavigate();
@@ -10,18 +12,18 @@ function AboutUs() {
 
     return (
         <>
-            <h1>About Us</h1>
+            <Header image={rocky1} title="National Parks USA"/>
 
-            <section>
-                <h2>Your nature vacation starts here!</h2>
+            <section className="homeText-about">
+                <h2>About us - Your nature vacation starts here!</h2>
                 <p>
-                    Welcome to Park Search USA, an pp for nature lovers looking for a national park in
+                    Welcome to Park Search USA, an application for nature lovers looking for a national park in
                     the United States.
                     We understand that it can be a challenge to find the park that truly matches your wishes from the
                     many parks that exist.
                 </p>
                 <p>
-                    That’s why we created a  user-friendly solution that helps you find exactly what you’re
+                    That’s why we created a user-friendly solution that helps you find exactly what you’re
                     looking for.
                 </p>
                 <p>With Park Search USA, you can:</p>
@@ -39,22 +41,18 @@ function AboutUs() {
                 <p>
                     Register or log in and discover the national parks!
                 </p>
-            </section>
 
-            {user ? (
-                <Button type="button" onClick={() => navigate("/parksearch")}>
-                    Search Park
-                </Button>
-            ) : (
-                <div>
-                    <Button type="button" onClick={() => navigate("/register")}>
-                        Register
-                    </Button>
-                    <Button type="button" onClick={() => navigate("/login")}>
-                        Login
-                    </Button>
+                <div className="buttons-about">
+                    {!user ? (
+                        <>
+                            <Button onClick={() => navigate("/register")}>Register</Button>
+                            <Button onClick={() => navigate("/login")}>Login</Button>
+                        </>
+                    ) : (
+                        <Button onClick={() => navigate("/parksearch")}>Search Park</Button>
+                    )}
                 </div>
-            )}
+            </section>
         </>
     );
 }

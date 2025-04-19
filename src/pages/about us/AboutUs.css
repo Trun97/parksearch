@@ -1,0 +1,88 @@
+/*////////////////////////////////////////////////////////////////////////
+Table of Contents:
+    1. Typography
+    2. Layout
+        2.1 Section Home Text
+        2.2 Buttons
+    3. Responsiveness
+////////////////////////////////////////////////////////////////////////*/
+
+/*////////////////////////
+    1. Typography
+////////////////////////*/
+
+.homeText-about h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.homeText-about p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.homeText-about ul {
+    margin-top: 10px;
+    margin-left: 25px;
+    padding-left: 10px;
+}
+
+.homeText-about li {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+
+/*////////////////////////
+    2. Layout
+////////////////////////*/
+
+/*///////////// 2.1 Section Home Text /////////////*/
+
+.homeText-about {
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: white;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+/*///////////// 2.2 Buttons /////////////*/
+
+.buttons-about {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 15px;
+    margin: 20px auto 60px;
+    max-width: 800px;
+}
+
+/*////////////////////////
+    3. Responsiveness
+////////////////////////*/
+
+@media screen and (max-width: 768px) {
+    .homeText-about {
+        padding: 20px;
+    }
+
+    .homeText-about p {
+        font-size: 14px;
+    }
+
+    .buttons-about {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .homeText-about p {
+        font-size: 16px;
+    }
+}

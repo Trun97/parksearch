@@ -4,6 +4,9 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Button from "../../components/Button/Button.jsx";
 import ParkSection from "../../components/ParkSection/ParkSection.jsx";
+import Header from "../../components/Header/Header.jsx";
+import rocky5 from '../../assets/chisosMountain.jpg'
+
 
 function DetailsPark() {
     const { id } = useParams();
@@ -53,7 +56,10 @@ function DetailsPark() {
     if (!park) return <p>Park not found.</p>;
 
     return (
-        <div>
+        <>
+            <main className="outer-coll-details">
+                <Header image={rocky5} title="Details Park" />
+                <section className="inner-coll-details">
             <h1>{park.fullName}</h1>
 
             {park.images?.[0]?.url && (
@@ -92,7 +98,9 @@ function DetailsPark() {
             )}
             <Button onClick={handleAddFavorite}>Add to favorites</Button>
             {message && <p>{message}</p>}
-        </div>
+                </section>
+        </main>
+        </>
     );
 }
 

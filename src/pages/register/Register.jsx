@@ -1,8 +1,10 @@
 import './Register.css';
-import { useState } from "react";
+import {useState} from "react";
 import axios from "axios";
 import Input from "../../components/Input/Input.jsx";
 import Button from "../../components/Button/Button.jsx";
+import Header from "../../components/Header/Header.jsx";
+import rocky2 from "../../assets/chisosMountain.jpg"
 
 function Register() {
     const [formData, setFormData] = useState({
@@ -44,50 +46,54 @@ function Register() {
             setSuccess("Registration successful! You can now log in.");
             setError("");
         } catch (error) {
+            console.error(error);
             setError("Something went wrong.");
             setSuccess("");
         }
     }
 
     return (
-        <div>
-            <h1>Register</h1>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Username:
-                    <Input
-                        name="username"
-                        value={formData.username}
-                        onChange={handleChange}
-                    />
-                </label>
-                <br />
-                <label>
-                    Email:
-                    <Input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                    />
-                </label>
-                <br />
-                <label>
-                    Password:
-                    <Input
-                        type="password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                    />
-                </label>
-                <br />
-                <Button type="submit">Create account</Button>
-            </form>
+        <>
+            <main className="outer-coll-register">
+                <Header image={rocky2} title="National Parks USA"/>
 
-            {error && <p className="error-message">{error}</p>}
-            {success && <p className="success-message">{success}</p>}
-        </div>
+                <section className="form-container">
+                    <h2>Register</h2>
+                    <form onSubmit={handleSubmit}>
+                        <label>
+                            Username:
+                            <Input
+                                name="username"
+                                value={formData.username}
+                                onChange={handleChange}
+                            />
+                        </label>
+                        <label>
+                            Email:
+                            <Input
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                            />
+                        </label>
+                        <label>
+                            Password:
+                            <Input
+                                type="password"
+                                name="password"
+                                value={formData.password}
+                                onChange={handleChange}
+                            />
+                        </label>
+                        <Button type="submit">Create account</Button>
+                    </form>
+
+                    {error && <p className="error-message">{error}</p>}
+                    {success && <p className="success-message">{success}</p>}
+                </section>
+            </main>
+        </>
     );
 }
 

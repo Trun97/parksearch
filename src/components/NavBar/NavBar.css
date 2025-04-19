@@ -1,5 +1,30 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3b6e4d;
+    color: white;
+    padding: 12px 24px;
 }
+
+.logo {
+    font-size: 20px;
+    margin: 0;
+}
+
+.navbar-right {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 6px 12px;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+

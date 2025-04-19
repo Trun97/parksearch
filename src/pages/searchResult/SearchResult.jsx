@@ -3,6 +3,9 @@ import {useContext, useEffect, useState} from "react";
 import axios from "axios";
 import {ParkSearchContext} from "../../context/ParkSearchContext/ParkSearchContext.jsx";
 import {useNavigate} from "react-router-dom";
+import Header from "../../components/Header/Header.jsx";
+import smoky1 from "../../assets/SmokyMountains2.jpg"
+
 
 function SearchResult() {
     const {selectedStates, selectedFacilities} = useContext(ParkSearchContext);
@@ -63,7 +66,7 @@ function SearchResult() {
 
             } catch (err) {
                 console.error("error fetching data:", err)
-                setError("something went wrong, try a different selection")
+                setError("Something went wrong, please try again")
             } finally {
                 setLoading(false);
             }
@@ -75,16 +78,17 @@ function SearchResult() {
     if (loading) return <p>Loading...</p>;
 
     return (
-        <div>
-            <h1>Found Parks</h1>
-
-            {error && <p>{error}</p>}
+        <>
+            <main className="outer-coll-search">
+                <Header image={smoky1} title="Found Parks" />
+                <section className="results">
+            {error && <p className="error">{error}</p>}
 
             {parks.length > 0 && (
-                <div>
+                <div className="inner-coll-search">
                     {parks.map((park) => (
-                        <div key={park.id}>
-                            <h2 onClick={() => navigate(`/detailspark/${park.parkCode}`)}>
+                        <div key={park.id} className="park-card">
+                            <h2 className="title" onClick={() => navigate(`/detailspark/${park.parkCode}`)}>
                                 {park.fullName}
                             </h2>
 
@@ -98,10 +102,11 @@ function SearchResult() {
                     ))}
                 </div>
             )}
-        </div>
+            </section>
+            </main>
+        </>
     );
 }
 
-// extra merge
 
 export default SearchResult;

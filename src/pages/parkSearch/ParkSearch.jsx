@@ -1,11 +1,14 @@
-import { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import {useState, useEffect, useContext} from "react";
+import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import usStates from "../../data/usStates.js";
-import { ParkSearchContext} from "../../context/ParkSearchContext/ParkSearchContext.jsx";
+import {ParkSearchContext} from "../../context/ParkSearchContext/ParkSearchContext.jsx";
 import Button from "../../components/Button/Button.jsx";
 import isMaxSelectionReached from "../../helpers/isMaxSelectionReached.js";
 import CheckboxItem from "../../components/CheckboxItem/CheckboxItem.jsx";
+import './ParkSearch.css';
+import smoky from "../../assets/crater-lake.jpg"
+import Header from "../../components/Header/Header.jsx";
 
 
 function ParkSearch() {
@@ -76,38 +79,43 @@ function ParkSearch() {
     }
 
     return (
-        <div>
-            <h1>Select up to 5 states</h1>
-            <div>
-                {usStates.map(({ code, name }) => (
-                    <CheckboxItem
-                        key={code}
-                        label={name}
-                        value={code}
-                        checked={selectedStates.includes(code)}
-                        onChange={() => toggleState(code)}
-                    />
-                ))}
-            </div>
+        <>
+            <main className="outer-coll-park">
+                <Header image={smoky} title="Find Your Park"/>
+                <section className="filters">
+                    <h2>Select up to 5 states</h2>
+                    <div className="wrapper">
+                        {usStates.map(({code, name}) => (
+                            <CheckboxItem
+                                key={code}
+                                label={name}
+                                value={code}
+                                checked={selectedStates.includes(code)}
+                                onChange={() => toggleState(code)}
+                            />
+                        ))}
+                    </div>
 
-            <h2>Select up to 5 amenities</h2>
-            <div>
-                {allAmenities.map((amenity) => (
-                    <CheckboxItem
-                        key={amenity.id}
-                        label={amenity.name}
-                        value={amenity.id}
-                        checked={selectedFacilities.includes(amenity.id)}
-                        onChange={() => toggleAmenity(amenity.id)}
-                    />
-                ))}
-            </div>
+                    <h2>Select up to 5 amenities</h2>
+                    <div className="wrapper">
+                        {allAmenities.map((amenity) => (
+                            <CheckboxItem
+                                key={amenity.id}
+                                label={amenity.name}
+                                value={amenity.id}
+                                checked={selectedFacilities.includes(amenity.id)}
+                                onChange={() => toggleAmenity(amenity.id)}
+                            />
+                        ))}
+                    </div>
 
-            <Button onClick={handleSearch}>Search</Button>
+                    <Button onClick={handleSearch}>Search</Button>
 
-            {loading && <p>Loading amenities...</p>}
-            {message && <p>{message}</p>}
-        </div>
+                    {loading && <p>Loading amenities...</p>}
+                    {message && <p>{message}</p>}
+                </section>
+            </main>
+        </>
     );
 }
 

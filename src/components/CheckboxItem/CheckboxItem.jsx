@@ -1,6 +1,8 @@
+import './CheckboxItem.css';
+
 function CheckboxItem({ label, value, checked, onChange }) {
     return (
-        <label>
+        <label className="items">
             <input
                 type="checkbox"
                 value={value}
