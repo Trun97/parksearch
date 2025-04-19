@@ -1,0 +1,64 @@
+/*////////////////////////////////////////////////////////////////////////
+Table of Contents:
+    1. Layout & Background
+    2. Profile Content
+    3. Favorites List
+    4. Responsiveness
+////////////////////////////////////////////////////////////////////////*/
+
+
+/*///////////// 1. Layout & Background /////////////*/
+.outer-coll-profile {
+    background-color: #e6efe6;
+    min-height: calc(100vh - 120px);
+}
+
+
+/*///////////// 2. Profile Content /////////////*/
+.inner-coll-profile {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.inner-coll-profile h2 {
+    margin-bottom: 10px;
+}
+
+.inner-coll-profile h3 {
+    margin-top: 30px;
+}
+
+
+/*///////////// 3. Favorites List /////////////*/
+.favorites-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.favorites-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 12px;
+}
+
+.favorites-list li a {
+    text-decoration: underline;
+    color: #1a4aa1;
+}
+.favorites-list button {
+    margin-left: 20px;
+}
+
+
+
+/*///////////// 4. Responsiveness /////////////*/
+@media screen and (max-width: 768px) {
+    .inner-coll-profile {
+        padding: 20px;
+    }
+}

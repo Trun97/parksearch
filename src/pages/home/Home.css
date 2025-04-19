@@ -45,9 +45,10 @@ Table of Contents:
     max-width: 800px;
     margin: 40px auto;
     padding: 30px;
-    background-color: white;
+    background-color: #efefef;
     border: 1px solid black;
     box-sizing: border-box;
+    color: black;
 }
 
 /*///////////// 2.2 Buttons /////////////*/

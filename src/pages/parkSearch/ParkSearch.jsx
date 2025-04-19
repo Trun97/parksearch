@@ -79,8 +79,8 @@ function ParkSearch() {
     }
 
     return (
-        <div>
-            <main className="outer-coll">
+        <>
+            <main className="outer-coll-park">
                 <Header image={smoky} title="Find Your Park"/>
                 <section className="filters">
                     <h2>Select up to 5 states</h2>
@@ -115,7 +115,7 @@ function ParkSearch() {
                     {message && <p>{message}</p>}
                 </section>
             </main>
-        </div>
+        </>
     );
 }
 

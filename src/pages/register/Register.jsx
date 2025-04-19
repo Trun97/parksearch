@@ -1,5 +1,5 @@
 import './Register.css';
-import { useState } from "react";
+import {useState} from "react";
 import axios from "axios";
 import Input from "../../components/Input/Input.jsx";
 import Button from "../../components/Button/Button.jsx";
@@ -53,45 +53,47 @@ function Register() {
     }
 
     return (
-        <main className="outer-coll">
-            <Header image={rocky2} title="National Parks USA"/>
+        <>
+            <main className="outer-coll-register">
+                <Header image={rocky2} title="National Parks USA"/>
 
-            <section className="form-container">
-                <h2>Register</h2>
-                <form onSubmit={handleSubmit}>
-                    <label>
-                        Username:
-                        <Input
-                            name="username"
-                            value={formData.username}
-                            onChange={handleChange}
-                        />
-                    </label>
-                    <label>
-                        Email:
-                        <Input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                        />
-                    </label>
-                    <label>
-                        Password:
-                        <Input
-                            type="password"
-                            name="password"
-                            value={formData.password}
-                            onChange={handleChange}
-                        />
-                    </label>
-                    <Button type="submit">Create account</Button>
-                </form>
+                <section className="form-container">
+                    <h2>Register</h2>
+                    <form onSubmit={handleSubmit}>
+                        <label>
+                            Username:
+                            <Input
+                                name="username"
+                                value={formData.username}
+                                onChange={handleChange}
+                            />
+                        </label>
+                        <label>
+                            Email:
+                            <Input
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                            />
+                        </label>
+                        <label>
+                            Password:
+                            <Input
+                                type="password"
+                                name="password"
+                                value={formData.password}
+                                onChange={handleChange}
+                            />
+                        </label>
+                        <Button type="submit">Create account</Button>
+                    </form>
 
-                {error && <p className="error-message">{error}</p>}
-                {success && <p className="success-message">{success}</p>}
-            </section>
-        </main>
+                    {error && <p className="error-message">{error}</p>}
+                    {success && <p className="success-message">{success}</p>}
+                </section>
+            </main>
+        </>
     );
 }
 

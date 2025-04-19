@@ -1,0 +1,91 @@
+/*////////////////////////////////////////////////////////////////////////
+Table of Contents:
+    1. Global Styles
+    2. Park Details
+    3. Button and Message
+    4. Responsive Design
+////////////////////////////////////////////////////////////////////////*/
+
+
+/*////////////////////////
+    1. Global Styles
+////////////////////////*/
+
+.outer-coll-details {
+    background-color: #d2e3d2;
+    min-height: calc(100vh - 120px);
+    padding-bottom: 40px;
+}
+
+
+/*////////////////////////
+    2. Park Details
+////////////////////////*/
+
+.inner-coll-details {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #efefef;
+    border: 1px solid black;
+}
+
+.inner-coll-details h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.inner-coll-details img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.inner-coll-details p {
+    margin-bottom: 15px;
+}
+
+.inner-coll-details ul {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+
+/*////////////////////////
+    3. Button and Message
+////////////////////////*/
+
+.inner-coll-details button {
+    margin-top: 20px;
+}
+
+.inner-coll-details .message {
+    margin-top: 10px;
+    font-weight: bold;
+    color: green;
+}
+
+
+/*////////////////////////
+    4. Responsive Design
+////////////////////////*/
+
+@media screen and (min-width: 768px) {
+    .inner-coll-details h1 {
+        font-size: 32px;
+    }
+    .inner-coll-details img {
+        height: 250px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .inner-coll-details h1 {
+        font-size: 36px;
+    }
+    .inner-coll-details img {
+        height: 300px;
+    }
+}

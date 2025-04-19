@@ -14,7 +14,7 @@ function AboutUs() {
         <>
             <Header image={rocky1} title="National Parks USA"/>
 
-            <section className="homeText">
+            <section className="homeText-about">
                 <h2>About us - Your nature vacation starts here!</h2>
                 <p>
                     Welcome to Park Search USA, an application for nature lovers looking for a national park in
@@ -42,7 +42,7 @@ function AboutUs() {
                     Register or log in and discover the national parks!
                 </p>
 
-                <div className="buttons">
+                <div className="buttons-about">
                     {!user ? (
                         <>
                             <Button onClick={() => navigate("/register")}>Register</Button>
