@@ -66,7 +66,7 @@ function SearchResult() {
 
             } catch (err) {
                 console.error("error fetching data:", err)
-                setError("Something went wrong, please try again")
+                setError("Something went wrong fetching data, please try again another time")
             } finally {
                 setLoading(false);
             }
